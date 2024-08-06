@@ -1,0 +1,125 @@
+services:
+  pokemons_data_content_delivery_network_service_testing:
+    build:
+      context: ./pokemons_data_content_delivery_network_service/
+      dockerfile: ./dockerfile.testing
+      tags:
+        - testing
+    volumes:
+      - ./pokemons_data_content_delivery_network_service/:/src/app/
+      
+  pokemons_data_content_delivery_network_service_development:
+    build:
+      context: ./pokemons_data_content_delivery_network_service/
+      dockerfile: ./dockerfile.development
+      tags:
+        - development
+    volumes:
+      - ./pokemons_data_content_delivery_network_service/:/src/app/
+    ports:
+      - 3007:3007
+
+  pokemons_data_content_delivery_network_service_production:
+    build:
+      context: ./pokemons_data_content_delivery_network_service/
+      dockerfile: ./dockerfile.production
+      tags:
+        - production
+    volumes:
+      - ./pokemons_data_content_delivery_network_service/:/src/app/
+    ports:
+      - 3006:3006
+
+  pokedex_api_service_testing:
+    build:
+      context: ./pokedex_api_service/
+      dockerfile: ./dockerfile.testing
+      tags:
+        - testing
+    volumes:
+      - ./pokedex_api_service/:/src/app/
+    depends_on:
+      - pokemons_data_content_delivery_network_service_production
+
+  pokedex_api_service_development:
+    build:
+      context: ./pokedex_api_service/
+      dockerfile: ./dockerfile.development
+      tags:
+        - development
+    volumes:
+      - ./pokedex_api_service/:/src/app/
+    ports:
+      - 3005:8000
+    depends_on:
+      - pokemons_data_content_delivery_network_service_production
+
+  pokedex_api_service_production_one:
+    build:
+      context: ./pokedex_api_service/
+      dockerfile: ./dockerfile.production
+      tags:
+        - production
+    ports:
+      - 3002:8000
+    depends_on:
+      - pokemons_data_content_delivery_network_service_production
+
+  pokedex_api_service_production_two:
+    build:
+      context: ./pokedex_api_service/
+      dockerfile: ./dockerfile.production
+      tags:
+        - production
+    ports:
+      - 3003:8000
+    depends_on:
+      - pokemons_data_content_delivery_network_service_production
+
+  pokedex_api_service_production_three:
+    build:
+      context: ./pokedex_api_service/
+      dockerfile: ./dockerfile.production
+      tags:
+        - production
+    ports:
+      - 3004:8000
+    depends_on:
+      - pokemons_data_content_delivery_network_service_production
+
+  load_balancing_proxy_service_testing:
+    build:
+      context: ./load_balancing_proxy_service/
+      dockerfile: ./dockerfile.testing
+      tags:
+        - testing
+    volumes:
+      - ./load_balancing_proxy_service/:/src/app/
+  
+  load_balancing_proxy_service_development:
+    build:
+      context: ./load_balancing_proxy_service/
+      dockerfile: ./dockerfile.development
+      tags:
+        - development
+    ports:
+      - 3001:4000
+    volumes:
+      - ./load_balancing_proxy_service/:/src/app/
+    depends_on:
+      - pokedex_api_service_production_one
+      - pokedex_api_service_production_two
+      - pokedex_api_service_production_three
+
+  load_balancing_proxy_service_production:
+    build:
+      context: ./load_balancing_proxy_service/
+      dockerfile: ./dockerfile.production
+      tags:
+        - production
+    ports:
+      - 3000:4000
+    depends_on:
+      - pokedex_api_service_production_one
+      - pokedex_api_service_production_two
+      - pokedex_api_service_production_three
