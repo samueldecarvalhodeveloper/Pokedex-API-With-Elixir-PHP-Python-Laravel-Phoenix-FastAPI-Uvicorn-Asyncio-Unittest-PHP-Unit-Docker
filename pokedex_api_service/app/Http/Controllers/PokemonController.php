@@ -23,7 +23,7 @@ class PokemonController extends Controller
 
     public function show(?string $id)
     {
-        if (PokemonSpecifications::isPokemonIdSmallerThanLastOrGreaterThanFirstPokemonId($id) || is_numeric($id)) {
+        if (is_numeric($id) || !PokemonSpecifications::isPokemonIdAnIdOfAPokemonFromTheFirstGeneration($id)) {
             $wantedPokemon = PokemonRepository::getPokemon((int) $id);
 
             return response()->json($wantedPokemon, Response::HTTP_OK);

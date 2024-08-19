@@ -3,34 +3,19 @@
 namespace App\Domains\Pokemon;
 
 use App\Domains\Pokemon\Infrastructure\Exception\NotExistingPokemonException;
+use App\Domains\Pokemon\Infrastructure\PokemonSpecifications;
 
 class PokemonDataAccessObject
 {
-    private function __construct()
-    {
-    }
+    private function __construct() {}
 
     public static function getPokemonData(int $id): PokemonEntity
     {
-        $listOfPokemonData = PokemonDataLoadingAdapter::getListOfPokemonsData();
-
-        $firstPokemonFromTheList = 0;
-        $lastPokemonFromTheList = count($listOfPokemonData) - 1;
-
-        while ($firstPokemonFromTheList <= $lastPokemonFromTheList) {
-            $pokemonFromTheMiddleOfTheList = floor(($firstPokemonFromTheList + $lastPokemonFromTheList) / 2);
-            $pokemonFromTheMiddleOfTheListValue = $listOfPokemonData[$pokemonFromTheMiddleOfTheList]->id;
-
-            if ($pokemonFromTheMiddleOfTheListValue === $id) {
-                return $listOfPokemonData[$pokemonFromTheMiddleOfTheList];
-            } elseif ($pokemonFromTheMiddleOfTheListValue < $id) {
-                $firstPokemonFromTheList = $pokemonFromTheMiddleOfTheList + 1;
-            } else {
-                $lastPokemonFromTheList = $pokemonFromTheMiddleOfTheList - 1;
-            }
+        if ($id >= 1 && $id <= 151) {
+            return PokemonDataLoadingAdapter::getListOfPokemonsData()[$id - 1];
+        } else {
+            throw new NotExistingPokemonException();
         }
-
-        throw new NotExistingPokemonException();
     }
 
     /**
