@@ -18,14 +18,6 @@ class PokemonSpecifications
     /**
      * @param int $pokemonId
      */
-    public static function isPokemonIdGreaterThanLastPokemonIdAndLessThanFirstPokemonIdFromTheFirstGeneration($pokemonId): bool
-    {
-        return $pokemonId >= PokemonConstants::NUMBER_OF_POKEMONS_FROM_THE_FIRST_GENERATION && $pokemonId <= PokemonConstants::BULBASAUR_ID;
-    }
-
-    /**
-     * @param int $pokemonId
-     */
     public static function isPokemonIdAnIdOfAPokemonFromTheFirstGeneration($pokemonId): bool
     {
         return $pokemonId >= PokemonConstants::BULBASAUR_ID && $pokemonId <= PokemonConstants::NUMBER_OF_POKEMONS_FROM_THE_FIRST_GENERATION;

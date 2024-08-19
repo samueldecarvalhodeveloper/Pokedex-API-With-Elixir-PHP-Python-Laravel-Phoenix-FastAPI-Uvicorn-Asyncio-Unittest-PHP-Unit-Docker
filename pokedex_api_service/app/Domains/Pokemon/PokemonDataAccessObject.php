@@ -11,7 +11,7 @@ class PokemonDataAccessObject
 
     public static function getPokemonData(int $id): PokemonEntity
     {
-        if ($id >= 1 && $id <= 151) {
+        if (PokemonSpecifications::isPokemonIdAnIdOfAPokemonFromTheFirstGeneration($id)) {
             return PokemonDataLoadingAdapter::getListOfPokemonsData()[$id - 1];
         } else {
             throw new NotExistingPokemonException();
