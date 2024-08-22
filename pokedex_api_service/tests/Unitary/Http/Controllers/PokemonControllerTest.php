@@ -46,18 +46,8 @@ class PokemonControllerTest extends TestCase
 
     function testIfMethodShowRespondsNotFoundPageIfWantedPokemonDoesNotExistOrIdIsNotANumericValue()
     {
-        $requestResponse = $this->get(ApplicationConstants::INDEX_ROUTER . PokemonConstants::BULBASAUR_ID);
+        $requestResponse = $this->get(ApplicationConstants::INDEX_ROUTER . PokemonConstants::BULBASAUR_NAME);
 
-        $bulbasaurData =
-            new PokemonEntity(
-                PokemonConstants::BULBASAUR_ID,
-                PokemonConstants::BULBASAUR_NAME,
-                PokemonConstants::BULBASAUR_IMAGE,
-                PokemonConstants::BULBASAUR_TYPES
-            );
-
-        $this->assertEquals($requestResponse->json(), (array) $bulbasaurData);
-
-        $requestResponse->assertStatus(Response::HTTP_OK);
+        $requestResponse->assertStatus(Response::HTTP_NOT_FOUND);
     }
 }

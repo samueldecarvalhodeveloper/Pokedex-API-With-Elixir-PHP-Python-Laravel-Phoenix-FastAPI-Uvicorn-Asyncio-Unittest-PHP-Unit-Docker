@@ -7,6 +7,7 @@ use App\Domains\Pokemon\Infrastructure\PokemonSpecifications;
 use App\Domains\Pokemon\PokemonEntity;
 use App\Domains\Pokemon\PokemonRepository;
 use App\Http\Controllers\Controller;
+use Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 class PokemonController extends Controller
@@ -23,11 +24,11 @@ class PokemonController extends Controller
 
     public function show(?string $id)
     {
-        if (is_numeric($id) || !PokemonSpecifications::isPokemonIdAnIdOfAPokemonFromTheFirstGeneration($id)) {
+        try {
             $wantedPokemon = PokemonRepository::getPokemon((int) $id);
 
             return response()->json($wantedPokemon, Response::HTTP_OK);
-        } else {
+        } catch (Exception $exception) {
             return response()->json(ApplicationConstants::NOT_FOUND_JSON_RESPONSE, Response::HTTP_NOT_FOUND);
         }
     }

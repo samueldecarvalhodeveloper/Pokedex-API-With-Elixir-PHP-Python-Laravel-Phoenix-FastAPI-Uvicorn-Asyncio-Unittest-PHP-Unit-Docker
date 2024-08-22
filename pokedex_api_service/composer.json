@@ -37,6 +37,8 @@
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate --ansi",
+            "echo \"APP_ENV=local\" >> ./.env",
+            "echo \"APP_DEBUG=true\" >> ./.env",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
         ],

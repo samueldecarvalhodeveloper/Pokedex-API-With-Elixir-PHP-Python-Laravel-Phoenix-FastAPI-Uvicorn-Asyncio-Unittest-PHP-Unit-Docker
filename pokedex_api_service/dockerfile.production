@@ -4,9 +4,6 @@ FROM composer:latest
 
 WORKDIR /src/app/
 
-ENV APP_ENV=production
-ENV APP_DEBUG=false
-
 COPY ./composer.json /src/app/
 COPY ./vite.config.js /src/app/
 COPY ./package.json /src/app/
@@ -22,6 +19,8 @@ COPY ./.env.example /src/app/
 
 RUN composer install --no-dev
 RUN composer setup:production
+RUN echo "APP_ENV=production" >> ./.env
+RUN echo "APP_DEBUG=false" >> ./.env
 
 CMD composer start
 
