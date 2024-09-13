@@ -17,4 +17,8 @@ class ApplicationConstants
     const POKEMON_DETAILS_ROUTER = "/{id}";
 
     const POKEMON_DETAILS_ROUTER_HANDLER_METHOD = "show";
+
+    const ACCESS_CONTROL_ALLOW_ORIGIN_HEADER_KEY = "Access-Control-Allow-Origin";
+
+    const ACCESS_CONTROL_ALLOW_ORIGIN_ALLOW_ALL = "*";
 }

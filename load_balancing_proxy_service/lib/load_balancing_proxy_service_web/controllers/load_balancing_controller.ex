@@ -1,4 +1,4 @@
-defmodule LoadBalancingController do
+defmodule LoadBalancingProxyServiceWeb.LoadBalancingController do
   require ServerConstants
   use LoadBalancingProxyServiceWeb, :controller
 

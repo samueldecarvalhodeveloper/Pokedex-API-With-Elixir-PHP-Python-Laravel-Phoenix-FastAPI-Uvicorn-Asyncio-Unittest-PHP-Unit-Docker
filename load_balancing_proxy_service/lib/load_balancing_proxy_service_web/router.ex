@@ -11,5 +11,5 @@ defmodule LoadBalancingProxyServiceWeb.Router do
     |> halt()
   end
 
-  resources ServerConstants.index_router, LoadBalancingController
+  resources ServerConstants.index_router, LoadBalancingProxyServiceWeb.LoadBalancingController
 end
