@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class HttpComponentTest extends TestCase
 {
-    function testIfComponentHandlesDataInputAndOutputScenario()
+    function testGettingHttpRequestResponse()
     {
         /**
          * @var ResponseEntity<array<PokemonDataTransferObject>>

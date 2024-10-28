@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class PokemonComponentTest extends TestCase
 {
-    function testIfComponentHandlesDataInputAndOutputScenario()
+    function testFetchingPokemonData()
     {
         $pokemonRepository = new PokemonRepository();
 

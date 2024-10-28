@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class ServerComponentTest extends TestCase
 {
-    function testIfComponentHandlesDataInputAndOutputScenario()
+    function testFetchingPokemonData()
     {
         $indexRouterResponse = $this->get(ApplicationConstants::INDEX_ROUTER);
         $pokemonDetailsRouterResponse = $this->get(ApplicationConstants::INDEX_ROUTER . PokemonConstants::BULBASAUR_ID);
