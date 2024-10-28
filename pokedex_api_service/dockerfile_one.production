@@ -4,7 +4,7 @@ FROM composer:latest
 
 WORKDIR /src/app/
 
-ENV PORT=3005
+ENV PORT=3002
 
 COPY ./composer.json /src/app/
 COPY ./vite.config.js /src/app/
@@ -19,10 +19,10 @@ COPY ./bootstrap/ /src/app/bootstrap/
 COPY ./app/ /src/app/app/
 COPY ./.env.example /src/app/
 
-RUN composer install
-RUN composer setup
-RUN echo "APP_ENV=local" >> ./.env
-RUN echo "APP_DEBUG=true" >> ./.env
+RUN composer install --no-dev
+RUN composer setup:production
+RUN echo "APP_ENV=production" >> ./.env
+RUN echo "APP_DEBUG=false" >> ./.env
 
 CMD composer start
 

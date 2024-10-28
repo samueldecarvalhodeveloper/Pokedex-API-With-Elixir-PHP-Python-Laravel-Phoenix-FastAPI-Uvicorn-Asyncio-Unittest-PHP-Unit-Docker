@@ -4,6 +4,8 @@ FROM composer:latest
 
 WORKDIR /src/app/
 
+ENV PORT=3004
+
 COPY ./composer.json /src/app/
 COPY ./vite.config.js /src/app/
 COPY ./package.json /src/app/
@@ -24,4 +26,4 @@ RUN echo "APP_DEBUG=false" >> ./.env
 
 CMD composer start
 
-EXPOSE 8000
+EXPOSE $PORT

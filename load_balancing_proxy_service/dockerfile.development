@@ -4,6 +4,8 @@ FROM elixir:latest
 
 WORKDIR /src/app/
 
+ENV PORT=3001
+
 COPY ./mix.exs /src/app/
 COPY ./.formatter.exs /src/app/
 COPY ./priv/ /src/app/priv/
@@ -14,4 +16,4 @@ RUN mix deps.get
 
 CMD mix phx.server
 
-EXPOSE 4000
+EXPOSE $PORT

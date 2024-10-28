@@ -4,7 +4,7 @@ namespace App\Constants\Domains;
 
 class PokemonConstants
 {
-    const STATIC_POKEMONS_DATA_URL = "http://host.docker.internal:3006/static/pokemons_data.json";
+    const STATIC_POKEMONS_DATA_URL = "http://localhost:3006/static/pokemons_data.json";
 
     const STATIC_POKEMON_IMAGE_BASE_URL = "http://localhost:3006/static/images/";
 
