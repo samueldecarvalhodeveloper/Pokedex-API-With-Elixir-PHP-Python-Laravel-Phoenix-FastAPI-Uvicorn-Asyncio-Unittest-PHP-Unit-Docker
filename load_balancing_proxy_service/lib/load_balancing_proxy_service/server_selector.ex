@@ -6,7 +6,7 @@ defmodule ServerSelector do
         ServerConstants.first_server_index
     )
 
-    if ServerSpecifications.is_current_server_index_the_last_server_index String.to_integer current_server_index do
+    if ServerSpecifications.is_current_server_index_the_last String.to_integer current_server_index do
       System.put_env(
         ServerConstants.current_server_index_environment_variable_name,
         ServerConstants.first_server_index
