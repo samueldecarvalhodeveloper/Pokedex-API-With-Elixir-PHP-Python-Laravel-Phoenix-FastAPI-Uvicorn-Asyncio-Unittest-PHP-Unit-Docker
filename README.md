@@ -9,7 +9,7 @@ Pokedex API With Elixir, PHP, Python, Laravel, Phoenix, FastAPI, Uvicorn, Asynci
 <br/>
 
 <div align="center">
-  <a href="#description">✍️ Description</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#topology">🗺️  Topology</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#install">🔍 Install</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#technologies">🚀 Technologies</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#related">♟️ Related</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#contact">✉️ Contact</a>
+  <a href="#description">✍️ Description</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#endpoints">📌  Endpoints</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#topology">🗺️  Topology</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#install">🔍 Install</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#technologies">🚀 Technologies</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#related">♟️ Related</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp <a href="#contact">✉️ Contact</a>
 </div>
 
 <br />
@@ -18,6 +18,12 @@ Pokedex API With Elixir, PHP, Python, Laravel, Phoenix, FastAPI, Uvicorn, Asynci
 <h3 id="description">✍️ Description:</h3>
 
 <p>It is usual to see a bunch of Pokedex APIs out here, but what are interesting is: how scalable this source code is, you can have thousands of request with this load balanced service in the shape it currently is; and the amount of languages this whole project was programmed in. I do like to respect te propose of the languages I do work on, and writing an API that uses Laravel to build a code that is easy to maintain, Elixir to handle a heavy load and FastAPI to create a fancy CDN was pleasureful to program.</p>
+
+<br />
+
+<h3 id="endpoints">📌  Endpoints:</h3>
+
+<image src="./service_endpoints.png" width="100%"/>
 
 <br />
 
