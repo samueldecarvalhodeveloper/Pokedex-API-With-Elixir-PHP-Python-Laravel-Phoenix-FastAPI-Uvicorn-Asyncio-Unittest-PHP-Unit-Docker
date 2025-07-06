@@ -5,6 +5,7 @@ FROM composer:latest
 WORKDIR /src/app/
 
 COPY ./composer.json /src/app/
+COPY ./composer.lock /src/app/
 COPY ./vite.config.js /src/app/
 COPY ./phpunit.xml /src/app/
 COPY ./package.json /src/app/

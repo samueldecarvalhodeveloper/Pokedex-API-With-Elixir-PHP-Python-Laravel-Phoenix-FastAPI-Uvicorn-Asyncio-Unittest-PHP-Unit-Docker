@@ -5,6 +5,7 @@ FROM elixir:latest
 WORKDIR /src/app/
 
 COPY ./mix.exs /src/app/
+COPY ./mix.lock /src/app/
 COPY ./.formatter.exs /src/app/
 COPY ./test/ /src/app/test/
 COPY ./priv/ /src/app/priv/

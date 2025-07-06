@@ -10,6 +10,7 @@ ENV DATABASE_PATH=./app.db
 ENV SECRET_KEY_BASE=+WaK/hl3qRqsZBrcA+n7IGpvraQsYdXYrB6+/M1DAnXPAyNRjUIL0VP1jtrAjDU7
 
 COPY ./mix.exs /src/app/
+COPY ./mix.lock /src/app/
 COPY ./.formatter.exs /src/app/
 COPY ./priv/ /src/app/priv/
 COPY ./lib/ /src/app/lib/

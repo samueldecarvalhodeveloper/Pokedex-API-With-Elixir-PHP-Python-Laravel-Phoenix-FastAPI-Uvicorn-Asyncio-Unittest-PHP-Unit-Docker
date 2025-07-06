@@ -30,4 +30,3 @@ load_balancing_service-*.tar
 *.db-*
 
 .elixir_ls
-mix.lock
