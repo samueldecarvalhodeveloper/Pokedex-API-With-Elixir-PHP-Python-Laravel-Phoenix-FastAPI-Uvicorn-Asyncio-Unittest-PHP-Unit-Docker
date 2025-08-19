@@ -1,0 +1,27 @@
+#syntax=docker/dockerfile:1
+
+FROM elixir:1.18.4-alpine
+
+WORKDIR /src/app/
+
+ENV PORT=3000
+
+ENV DATABASE_PATH=./app.db
+ENV SECRET_KEY_BASE=+WaK/hl3qRqsZBrcA+n7IGpvraQsYdXYrB6+/M1DAnXPAyNRjUIL0VP1jtrAjDU7
+
+COPY ./mix.exs /src/app/
+COPY ./mix.lock /src/app/
+COPY ./.formatter.exs /src/app/
+COPY ./priv/ /src/app/priv/
+COPY ./lib/ /src/app/lib/
+COPY ./config/ /src/app/config/
+
+RUN mix deps.get
+
+RUN touch app.db
+
+RUN MIX_ENV=prod mix release
+
+CMD _build/prod/rel/load_balancing_proxy_service/bin/load_balancing_proxy_service start
+
+EXPOSE $PORT

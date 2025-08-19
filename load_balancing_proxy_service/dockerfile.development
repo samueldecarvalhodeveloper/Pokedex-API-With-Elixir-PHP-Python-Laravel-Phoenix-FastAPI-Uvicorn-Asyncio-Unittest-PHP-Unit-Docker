@@ -1,0 +1,20 @@
+#syntax=docker/dockerfile:1
+
+FROM elixir:1.18.4-alpine
+
+WORKDIR /src/app/
+
+ENV PORT=3001
+
+COPY ./mix.exs /src/app/
+COPY ./mix.lock /src/app/
+COPY ./.formatter.exs /src/app/
+COPY ./priv/ /src/app/priv/
+COPY ./lib/ /src/app/lib/
+COPY ./config/ /src/app/config/
+
+RUN mix deps.get
+
+CMD mix phx.server
+
+EXPOSE $PORT

@@ -1,0 +1,19 @@
+#syntax=docker/dockerfile:1
+
+FROM python:3.13.7-alpine
+
+WORKDIR /src/app/
+
+ENV PORT=3006
+
+COPY ./src/ /src/app/src/
+COPY ./static/ /src/app/static/
+COPY ./test/ /src/app/test/
+COPY ./requirements.txt /src/app/
+COPY ./main.py /src/app/
+
+RUN pip install -r ./requirements.txt
+
+CMD python ./main.py
+
+EXPOSE 3006

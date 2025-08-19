@@ -1,0 +1,30 @@
+#syntax=docker/dockerfile:1
+
+FROM composer:2.8.10
+
+WORKDIR /src/app/
+
+ENV PORT=3003
+
+COPY ./composer.json /src/app/
+COPY ./composer.lock /src/app/
+COPY ./vite.config.js /src/app/
+COPY ./package.json /src/app/
+COPY ./artisan /src/app/artisan
+COPY ./storage/ /src/app/storage/
+COPY ./routes/ /src/app/routes/
+COPY ./public/ /src/app/public/
+COPY ./database/ /src/app/database/
+COPY ./config/ /src/app/config/
+COPY ./bootstrap/ /src/app/bootstrap/
+COPY ./app/ /src/app/app/
+COPY ./.env.example /src/app/
+
+RUN composer install --no-dev
+RUN composer setup:production
+RUN echo "APP_ENV=production" >> ./.env
+RUN echo "APP_DEBUG=false" >> ./.env
+
+CMD composer start
+
+EXPOSE $PORT
